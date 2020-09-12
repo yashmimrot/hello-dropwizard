@@ -33,24 +33,25 @@ public class HelloWorldResource {
                      @PathParam("operation") String operation) {
         System.out.println("operation:"+operation);
         try {
+            operation= operation.toLowerCase();
             int num1 = Integer.parseInt(first);
             int num2 = Integer.parseInt(second);
-            if (operation.equals("+")) {
-                return num1 + operation + num2 + " = " + (num1 + num2);
+            if (operation.startsWith("a")) {
+                return num1 + " + " + num2 + " = " + (num1 + num2);
             }
-            if (operation.equals("-")) {
-                return num1 + operation + num2 + " = " + (num1 - num2);
+            if (operation.startsWith("s")) {
+                return num1 + " - " + num2 + " = " + (num1 - num2);
             }
-            if (operation.equals("*")) {
-                return num1 + operation + num2 + " = " + (num1 * num2);
+            if (operation.startsWith("m")) {
+                return num1 + " * " + num2 + " = " + (num1 * num2);
             }
-            if (operation.equals("/")) {
-                return num1 + operation + num2 + " = " + (num1 / num2);
+            if (operation.startsWith("d")) {
+                return num1 + " / " + num2 + " = " + (num1 / num2);
             }
             return "Please enter a valid operation";
         } catch (Exception e) {
             e.printStackTrace();
-            return "please enter valid numbers";
+            return "Please enter valid numbers";
         }
     }
 
